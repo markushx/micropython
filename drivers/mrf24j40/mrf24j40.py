@@ -346,8 +346,10 @@ class MRF24J40:
         pyb.delay(1)
         self.reset.high()
 
-        self.cs.high()
-        pyb.delay(1)
+        # self.cs.high()
+        # pyb.delay(1)
+        # self.cs.low()
+        # pyb.delay(1)
 
         # initialize the MRF24J40 according to Example 3-1 of the datasheet
         self.reset_sw()
