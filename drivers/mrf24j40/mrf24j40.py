@@ -382,32 +382,54 @@ class MRF24J40:
         ## done?
 
     def reg_short_read(self, reg):
+        txbuf = bytearray(2)
+        rxbuf = bytearray(2)
+        txbuf[0] = 0xff & (reg<<1)
+        txbuf[1] = 0x0
+        print("Short TX read: " + str(txbuf))
         self.cs.low()
-        self.spi.send(reg<<1)
-        buf = self.spi.recv(1)
+        self.spi.send_recv(txbuf, rxbuf)
         self.cs.high()
-        return buf[0]
+        print("Short RX read: " + str(rxbuf))
+        return rxbuf[1]
 
     def reg_long_read(self, reg):
+        txbuf = bytearray(3)
+        rxbuf = bytearray(3)
+        txbuf[0] = 0xff & (0x80 | reg>>3)
+        txbuf[1] = 0xff & ((reg<<5))
+        txbuf[2] = 0x0
+        print("Long TX read: " + str(txbuf))
         self.cs.low()
-        self.spi.send(0x80 | reg>>3)
-        self.spi.send((reg & 0x7)<<5)
-        buf = self.spi.recv(1)
+        self.spi.send_recv(txbuf, rxbuf)
         self.cs.high()
-        return buf[0]
+        print("Long RX read: " + str(rxbuf))
+        return rxbuf[2]
 
     def reg_short_write(self, reg, buf):
+        txbuf = bytearray(2)
+        rxbuf = bytearray(2)
+        txbuf[0] = 0xff & ((reg<<1) | 0x1)
+        txbuf[1] = buf
+        print("Short TX write: " + str(txbuf))
         self.cs.low()
-        self.spi.send(reg<<1 | 0x1)
-        self.spi.send(buf)
+        self.spi.send_recv(txbuf, rxbuf)
         self.cs.high()
+        print("Short RX write: " + str(rxbuf))
+        #return rxbuf[1]
 
     def reg_long_write(self, reg, buf):
+        txbuf = bytearray(3)
+        rxbuf = bytearray(3)
+        txbuf[0] = 0xff & (0x80 | reg>>3)
+        txbuf[1] = 0xff & ((reg<<5) | 0x10)
+        txbuf[2] = buf
+        print("Long TX write: " + str(txbuf))
         self.cs.low()
-        self.spi.send(0x80 | reg>>3)
-        self.spi.send(((reg & 0x7)<<5) | 0x1)
-        self.spi.send(buf)
+        self.spi.send_recv(txbuf, rxbuf)
         self.cs.high()
+        print("Long RX write: " + str(rxbuf))
+        #return rxbuf[1]
 
     def reset_pin(self):
         self.resetpin.low()
