@@ -10,7 +10,7 @@ def int_handler(line):
     if ((ret & MRF24J40_INT_TX) != 0):
         print ("TX done")
 
-spi = SPI(1, SPI.MASTER, baudrate=4000, polarity=0, phase=0, firstbit=SPI.MSB)
+spi = SPI(1, SPI.MASTER, baudrate=400000, polarity=0, phase=1, firstbit=SPI.MSB)
 pin_cs    = Pin(Pin.board.X5,  Pin.OUT_PP)
 pin_wake  = Pin(Pin.board.Y11, Pin.OUT_PP)
 pin_reset = Pin(Pin.board.Y12, Pin.OUT_PP)
