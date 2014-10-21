@@ -453,6 +453,9 @@ class MRF24J40:
         assert (((channel & 0x0f) == 0x03))
         self.reg_long_write(RFCON0, channel)
 
+    def get_channel(self):
+        return self.reg_long_read(RFCON0)
+
     def int_tasks(self):
         ret = 0
         stat = self.reg_short_read(INTSTAT)
