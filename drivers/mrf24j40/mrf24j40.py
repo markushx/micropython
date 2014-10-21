@@ -450,7 +450,7 @@ class MRF24J40:
     def set_channel(self, channel):
         assert (channel >= CHANNEL_11)
         assert (channel <= CHANNEL_26)
-        #assert ((channel & 0x0f) == 0x03))
+        assert (((channel & 0x0f) == 0x03))
         self.reg_long_write(RFCON0, channel)
 
     def int_tasks(self):
