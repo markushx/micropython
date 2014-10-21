@@ -374,7 +374,9 @@ class MRF24J40:
         self.reg_short_write(INTCON, val)
         
         # set channel
+        #print("SET Channel " + str(channel))
         self.set_channel(channel)
+        #print("GET Channel " + str(self.get_channel()))
 
         # set transmission power
         self.reg_long_write(RFCON3, 0x0) # 0dBm
