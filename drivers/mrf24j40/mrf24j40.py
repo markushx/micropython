@@ -491,7 +491,7 @@ class MRF24J40:
 
         pyb.enable_irq(irqstate)
 
-        return buf
+        return (buf, rssi, lqi)
 
     def set_pan(self, pan):
         self.reg_short_write(PANIDH, pan >> 8)
