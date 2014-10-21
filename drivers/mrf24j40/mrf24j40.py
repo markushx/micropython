@@ -351,19 +351,19 @@ class MRF24J40:
 
         # initialize the MRF24J40 according to Example 3-1 of the datasheet
         self.reset_sw()
-        self.reg_short_write(PACON2, 0x98) # TODO: replace with symbolic names
-        self.reg_short_write(TXSTBL, 0x95)
-        self.reg_long_write(RFCON0, 0x03)
-        self.reg_long_write(RFCON1, 0x01)
-        self.reg_long_write(RFCON2, 0x80)
-        self.reg_long_write(RFCON6, 0x90)
-        self.reg_long_write(RFCON7, 0x80)
-        self.reg_long_write(RFCON8, 0x10)
-        self.reg_long_write(SLPCON1, 0x21)
+        self.reg_short_write(PACON2, FIFOEN|TXONTS1|TXONTS0) #0x98
+        self.reg_short_write(TXSTBL, RFSTBL3|RFSTBL0|MSIFS2|MSIFS0) #0x95
+        self.reg_long_write(RFCON0, RFOPT0|RFOPT1) #0x03
+        self.reg_long_write(RFCON1, VCOOPT0) #0x01
+        self.reg_long_write(RFCON2, PLLEN) #0x80
+        self.reg_long_write(RFCON6, TXFIL|20MRECVR) #0x90
+        self.reg_long_write(RFCON7, SLPCLKSEL1) #0x80
+        self.reg_long_write(RFCON8, RFVCO) #0x10
+        self.reg_long_write(SLPCON1, CLKOUTEN_N|SLPCLKDIV0) #0x21
 
-        self.reg_short_write(BBREG2, 0x80)
-        self.reg_short_write(CCAEDTH, 0x60)
-        self.reg_short_write(BBREG6, 0x40)
+        self.reg_short_write(BBREG2,CCAMODE1) #0x80
+        self.reg_short_write(CCAEDTH, CCAEDTH6|CCAEDTH5) #0x60
+        self.reg_short_write(BBREG6, RSSIMODE0) #0x40
 
         #enable interrupts
         pyb.enable_irq()
