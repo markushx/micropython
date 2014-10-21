@@ -205,6 +205,15 @@ COORD     = const(0x04)
 ERRPKT    = const(0x02)
 PROMI     = const(0x01)
 
+#PACON2 register 0x18
+FIFOEN    = const(0x80)
+TXONTS3   = const(0x20)
+TXONTS2   = const(0x10)
+TXONTS1   = const(0x08)
+TXONTS0   = const(0x04)
+TXONT8    = const(0x02)
+TXONT7    = const(0x01)
+
 #TXNCON register 0x1B
 FPSTAT    = const(0x10)
 INDIRECT  = const(0x08)
@@ -216,6 +225,16 @@ TXNTRIG   = const(0x01)
 RSTPWR    = const(0x04)
 RSTBB     = const(0x02)
 RSTMAC    = const(0x01)
+
+#TXSTBL register 0x2E
+RFSTBL3  = const(0x80)
+RFSTBL2  = const(0x40)
+RFSTBL1  = const(0x20)
+RFSTBL0  = const(0x10)
+MSIFS3   = const(0x08)
+MSIFS2   = const(0x04)
+MSIFS1   = const(0x02)
+MSIFS0   = const(0x01)
 
 #INTSTAT register 0x31
 SLPIF     = const(0x80)
@@ -236,6 +255,72 @@ RFRXMODE  = const(0x01)
 
 # BBREG1 register 0x39
 RXDECINV  = const(0x04)
+
+# BBREG2 register 0x3A
+CCAMODE1  = const(0x80)
+CCAMODE0  = const(0x40)
+CCACSTH3  = const(0x20)
+CCACSTH2  = const(0x10)
+CCACSTH1  = const(0x08)
+CCACSTH0  = const(0x04)
+
+# BBREG6 register 0x3E
+RSSIMODE1 = const(0x80)
+RSSIMODE0 = const(0x40)
+RSSIRDY   = const(0x01)
+
+# CCAEDTH register 0x3F
+CCAEDTH7  = const(0x80)
+CCAEDTH6  = const(0x40)
+CCAEDTH5  = const(0x20)
+CCAEDTH4  = const(0x10)
+CCAEDTH3  = const(0x08)
+CCAEDTH2  = const(0x04)
+CCAEDTH1  = const(0x02)
+CCAEDTH0  = const(0x01)
+
+#RFCON0 register 0x200
+CHANNEL3  = const(0x80)
+CHANNEL2  = const(0x40)
+CHANNEL1  = const(0x20)
+CHANNEL0  = const(0x10)
+RFOPT3    = const(0x08)
+RFOPT2    = const(0x04)
+RFOPT1    = const(0x02)
+RFOPT0    = const(0x01)
+
+#RFCON1 register 0x201
+VCOOPT7   = const(0x80)
+VCOOPT6   = const(0x40)
+VCOOPT5   = const(0x20)
+VCOOPT4   = const(0x10)
+VCOOPT3   = const(0x08)
+VCOOPT2   = const(0x04)
+VCOOPT1   = const(0x02)
+VCOOPT0   = const(0x01)
+
+#RFCON2 register 0x202
+PLLEN     = const(0x80)
+
+#RFCON6 register 0x206
+TXFIL     = const(0x80)
+20MRECVR  = const(0x10)
+BATEN     = const(0x08)
+
+#RFCON7 register 0x207
+SLPCLKSEL1 = const(0x80)
+SLPCLKSEL2 = const(0x40)
+
+#RFCON8 register 0x208
+RFVCO     = const(0x10)
+
+#RFCON1 register 0x220
+CLKOUTEN_N = const(0x20)
+SLPCLKDIV4 = const(0x10)
+SLPCLKDIV3 = const(0x08)
+SLPCLKDIV2 = const(0x04)
+SLPCLKDIV1 = const(0x02)
+SLPCLKDIV0 = const(0x01)
 
 #... TODO more registers
 
