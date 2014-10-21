@@ -411,19 +411,19 @@ class MRF24J40:
 
     def reset_pin(self):
         self.resetpin.low()
-        pyb.delay(2)
+        pyb.delay(1)
         self.resetpin.high()
-        pyb.delay(2)
+        pyb.delay(1)
 
     def reset_sw(self):
         self.reg_short_write(SOFTRST, RSTPWR | RSTBB | RSTMAC)
-        pyb.delay(2)
+        pyb.delay(1)
 
     def reset_radio(self):
         self.reg_short_write(RFCTL, RFRST)
-        pyb.delay(2)
+        pyb.delay(1)
         self.reg_short_write(RFCTL, 0)
-        pyb.delay(2)
+        pyb.delay(1)
         
     def set_channel(self, channel):
         assert (channel >= CHANNEL_11)
