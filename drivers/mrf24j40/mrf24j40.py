@@ -367,7 +367,6 @@ class MRF24J40:
 
         #enable interrupts
         pyb.enable_irq()
-
         val = self.reg_short_read(INTCON)
         val &= ~(0x1|0x8) #Clear TXNIE and RXIE. Enable interrupts
         self.reg_short_write(INTCON, val)
@@ -379,7 +378,6 @@ class MRF24J40:
         self.reg_long_write(RFCON3, 0x0) # 0dBm
 
         self.reset_radio()
-        ## done?
 
     def reg_short_read(self, reg):
         txbuf = bytearray(2)
@@ -478,7 +476,8 @@ class MRF24J40:
         # Read address, 0x300; get RXFIFO frame length value.
         len = self.reg_short_read(RX)
 
-        # Read RXFIFO addresses, 0x301 through (0x300 + Frame Length + 2); read packet data plus LQI and RSSI.
+        # Read RXFIFO addresses, 0x301 through (0x300 + Frame Length + 2);
+        # read packet data plus LQI and RSSI.
         buf = []
         for i in range(len):
             buf[i] = self.reg_short_read(RX+1+i)
