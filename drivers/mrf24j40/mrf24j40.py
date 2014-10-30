@@ -304,7 +304,7 @@ PLLEN     = const(0x80)
 
 #RFCON6 register 0x206
 TXFIL     = const(0x80)
-20MRECVR  = const(0x10)
+_20MRECVR = const(0x10)
 BATEN     = const(0x08)
 
 #RFCON7 register 0x207
@@ -324,7 +324,32 @@ SLPCLKDIV0 = const(0x01)
 
 #... TODO more registers
 
+#IEEE 802.15.4
+FRAME_TYPE_BEACON  = const(0b000)
+FRAME_TYPE_DATA    = const(0b001)
+FRAME_TYPE_ACK     = const(0b010)
+FRAME_TYPE_COMMAND = const(0b011)
+OFFSET_FRAME_TYPE        = const(0)
+OFFSET_SECURITY_ENABLED  = const(3)
+OFFSET_FRAME_PENDING     = const(4)
+OFFSET_AR                = const(5)
+OFFSET_PANID_COMPRESSION = const(6)
+
+ADDR_MODE_NOT_PRESENT =  const(0b00)
+ADDR_MODE_SHORT_16    =  const(0b10)
+ADDR_MODE_EXT_64      =  const(0b11)
+OFFSET_DEST_ADDR_MDOE = const(6)
+OFFSET_SRC_ADDR_MDOE  = const(2)
+
+FRAME_VERSION_2003    = const(0x00)
+FRAME_VERSION_2006    = const(0x01)
+OFFSET_FRAME_VERSION  = const(4)
+
 class MRF24J40:
+    seq_number = 0x0
+    pan        = 0x0
+    src        = 0x0
+
     def __init__(self, spi, cs, wake, reset, interrupt, ihandler, channel=CHANNEL_26):
         # init the SPI bus and pins
         cs.init(cs.OUT_PP, cs.PULL_NONE)
@@ -358,7 +383,7 @@ class MRF24J40:
         self.reg_long_write(RFCON0, RFOPT0|RFOPT1) #0x03
         self.reg_long_write(RFCON1, VCOOPT0) #0x01
         self.reg_long_write(RFCON2, PLLEN) #0x80
-        self.reg_long_write(RFCON6, TXFIL|20MRECVR) #0x90
+        self.reg_long_write(RFCON6, TXFIL|_20MRECVR) #0x90
         self.reg_long_write(RFCON7, SLPCLKSEL1) #0x80
         self.reg_long_write(RFCON8, RFVCO) #0x10
         self.reg_long_write(SLPCON1, CLKOUTEN_N|SLPCLKDIV0) #0x21
@@ -497,14 +522,19 @@ class MRF24J40:
         return (buf, rssi, lqi)
 
     def set_pan(self, pan):
+        self.pan = pan
         self.reg_short_write(PANIDH, pan >> 8)
         self.reg_short_write(PANIDL, pan & 0xFF)
 
     def set_short_address(self, addr):
+        self.src = addr
         self.reg_short_write(SADRH, addr >> 8)
         self.reg_short_write(SADRL, addr & 0xFF)
-    
-    def send(self, buf, hdr_len, frame_len, timeout=500):
+
+    def send_basic(self, buf, hdr_len, frame_len):
+        assert hdr_len < frame_len
+        assert len(buf) == frame_len
+
         # Request ACK
         txn = self.reg_short_read(TXNCON)
         self.reg_short_write(TXNCON, txn | TXNACKREQ)
@@ -517,3 +547,42 @@ class MRF24J40:
 
         #TODO: encryption, etc
         self.reg_short_write(TXNCON, txn | TXNTRIG)
+
+    def send(self, dest, payload):
+        assert len(dest) == 2 or len(dest) == 8
+        assert len(payload) <= 11
+
+        frame_control = bytearray([
+            #first byte
+            FRAME_TYPE_DATA << OFFSET_FRAME_TYPE |
+            0 << OFFSET_SECURITY_ENABLED |
+            0 << OFFSET_FRAME_PENDING |
+            1 << OFFSET_AR |
+            1 << OFFSET_PANID_COMPRESSION |
+            0 << 0,
+            #second byte
+            ADDR_MODE_SHORT_16 << OFFSET_DEST_ADDR_MDOE |
+            FRAME_VERSION_2003 << OFFSET_FRAME_VERSION |
+            ADDR_MODE_SHORT_16 << OFFSET_SRC_ADDR_MDOE
+            ])
+
+        addressing = bytearray([
+            self.pan >> 8,
+            self.pan & 0xFF,
+            dest[0],
+            dest[1],
+            self.src >> 8,
+            self.src & 0xFF
+            ])
+        #TODO: other addressing modes
+        #TODO: security
+        hdr = bytearray([i for subl in [frame_control, [self.seq_number], addressing] for i in subl])
+        hdr_len = len(hdr)
+        frame_len = hdr_len + len(payload)
+        buf = bytearray([i for subl in [hdr, payload] for i in subl])
+
+        print("TX: HDR: " + str(hdr))
+        print("TX: BUF: " + str(buf))
+        self.send_basic(buf, hdr_len, frame_len)
+        self.seq_number = (self.seq_number + 1) % 0xff
+
