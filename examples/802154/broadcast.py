@@ -18,8 +18,8 @@ pin_wake  = pyb.Pin(pyb.Pin.board.Y11, pyb.Pin.OUT_PP)
 pin_reset = pyb.Pin(pyb.Pin.board.Y12, pyb.Pin.OUT_PP)
 mrf = mrf24j40.MRF24J40(spi, pin_cs, pin_wake, pin_reset, interrupt='Y10', ihandler=int_handler)
 
-mrf.set_pan(0xcafe)
-mrf.set_short_address(0x0001)
+mrf.set_pan(bytearray([0xca, 0xfe])
+mrf.set_short_address(bytearray([0x00, 0x01])
 
 payload = bytearray([0xbb, 0xaa, 0x99])
 dest = bytearray([0xff, 0xff])

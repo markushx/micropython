@@ -522,14 +522,14 @@ class MRF24J40:
         return (buf, rssi, lqi)
 
     def set_pan(self, pan):
-        self.pan = pan
-        self.reg_short_write(PANIDH, pan >> 8)
-        self.reg_short_write(PANIDL, pan & 0xFF)
+        assert len(pan) == 2
+        self.reg_short_write(PANIDH, pan[0])
+        self.reg_short_write(PANIDL, pan[1])
 
     def set_short_address(self, addr):
-        self.src = addr
-        self.reg_short_write(SADRH, addr >> 8)
-        self.reg_short_write(SADRL, addr & 0xFF)
+        assert len(addr) == 2
+        self.reg_short_write(SADRH, addr[0])
+        self.reg_short_write(SADRL, addr[1])
 
     def send_basic(self, buf, hdr_len, frame_len):
         assert hdr_len < frame_len
@@ -567,14 +567,88 @@ class MRF24J40:
             ])
 
         addressing = bytearray([
-            self.pan >> 8,
-            self.pan & 0xFF,
+            self.pan[0],
+            self.pan[1],
             dest[0],
             dest[1],
-            self.src >> 8,
-            self.src & 0xFF
+            self.src[0],
+            self.src[1]
             ])
-        #TODO: other addressing modes
+        #TODO: security
+        hdr = bytearray([i for subl in [frame_control, [self.seq_number], addressing] for i in subl])
+        hdr_len = len(hdr)
+        frame_len = hdr_len + len(payload)
+        buf = bytearray([i for subl in [hdr, payload] for i in subl])
+
+        print("TX: HDR: " + str(hdr))
+        print("TX: BUF: " + str(buf))
+        self.send_basic(buf, hdr_len, frame_len)
+        self.seq_number = (self.seq_number + 1) % 0xff
+
+    def send(self, src, srcpan, dest, destpan, payload):
+        assert len(src) == 2 or len(src) == 8
+        assert len(dest) == 2 or len(dest) == 8
+        assert len(srcpan) == 2
+        assert len(destpan) == 2 
+        assert len(payload) <= 11
+
+        if (srcpan == destpan):
+            compression = (1 << OFFSET_PANID_COMPRESSION)
+        else:
+            compression = (0 << OFFSET_PANID_COMPRESSION)
+
+        if (len(dest) == 2):
+            dest_mode = (ADDR_MODE_SHORT_16 << OFFSET_DEST_ADDR_MODE)
+        else:
+            dest_mode = (ADDR_MODE_LONG_64 << OFFSET_DEST_ADDR_MODE)
+
+        if (len(src) == 2):
+            src_mode = (ADDR_MODE_SHORT_16 << OFFSET_SRC_ADDR_MODE)
+        else:
+            src_mode = (ADDR_MODE_LONG_64 << OFFSET_SRC_ADDR_MODE)
+        
+        frame_control = bytearray([
+            #first byte
+            FRAME_TYPE_DATA << OFFSET_FRAME_TYPE |
+            0 << OFFSET_SECURITY_ENABLED |
+            0 << OFFSET_FRAME_PENDING |
+            1 << OFFSET_AR |
+            compression |
+            0 << 0,
+            #second byte
+            dest_mode |
+            FRAME_VERSION_2003 << OFFSET_FRAME_VERSION |
+            src_mode
+            ])
+
+        addressing_length = 0
+        if (srcpan == destpan):
+            addressing_length += 2
+        else:
+            addressing_length += 4
+        addressing_length += len(src)
+        addressing_length += len(dest)
+        
+        addressing = bytearray(addressing_length)
+        addressing_index = 0
+        addressing[addressing_index] = destpan[0]
+        addressing_index += 1
+        addressing[addressing_index] = destpan[1]
+        addressing_index += 1
+        for i in range(0, len(dest)):
+            addressing[addressing_index] = dest[i]
+            addressing_index += 1
+
+        if (srcpan != destpan):
+            addressing[addressing_index] = srcpan[0]
+            addressing_index += 1
+            addressing[addressing_index] = srcpan[1]
+            addressing_index += 1
+
+        for i in range(0, len(src)):
+            addressing[addressing_index] = src[i]
+            addressing_index += 1
+                        
         #TODO: security
         hdr = bytearray([i for subl in [frame_control, [self.seq_number], addressing] for i in subl])
         hdr_len = len(hdr)
