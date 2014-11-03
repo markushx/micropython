@@ -205,6 +205,91 @@ COORD     = const(0x04)
 ERRPKT    = const(0x02)
 PROMI     = const(0x01)
 
+#RXFLUSH register 0x0D
+WAKEPOL   = const(0x40)
+WAKEPAD   = const(0x20)
+CMDONLY   = const(0x08)
+DATAONLY  = const(0x04)
+BCNONLY   = const(0x02)
+RXFLUSH_BIT = const(0x01)
+
+#ORDER register 0x10
+BO3       = const(0x80)
+BO2       = const(0x40)
+BO1       = const(0x20)
+BO0       = const(0x10)
+SO3       = const(0x08)
+SO2       = const(0x04)
+SO1       = const(0x02)
+SO0       = const(0x01)
+
+#TXMCR register 0x11
+NOCSMA    = const(0x80)
+BATLIFEXT = const(0x40)
+SLOTTED   = const(0x20)
+MACMINBE1 = const(0x10)
+MACMINBE0 = const(0x08)
+CSMABF2   = const(0x04)
+CSMABF1   = const(0x02)
+CSMABF0   = const(0x01)
+
+#ACKTIMOUT register 0x12
+DRPACK    = const(0x80)
+MAWD6     = const(0x40)
+MAWD5     = const(0x20)
+MAWD4     = const(0x10)
+MAWD3     = const(0x08)
+MAWD2     = const(0x04)
+MAWD1     = const(0x02)
+MAWD0     = const(0x01)
+
+#ESLOTG1 register 0x13
+GTS1_3    = const(0x80)
+GTS1_2    = const(0x40)
+GTS1_1    = const(0x20)
+GTS1_0    = const(0x10)
+CAP3      = const(0x08)
+CAP2      = const(0x04)
+CAP1      = const(0x02)
+CAP0      = const(0x01)
+
+#SYMTICKL register 0x14
+TICKP7    = const(0x80)
+TICKP6    = const(0x40)
+TICKP5    = const(0x20)
+TICKP4    = const(0x10)
+TICKP3    = const(0x08)
+TICKP2    = const(0x04)
+TICKP1    = const(0x02)
+TICKP0    = const(0x01)
+
+#SYMTICKH register 0x15
+TXONT6    = const(0x80)
+TXONT5    = const(0x40)
+TXONT4    = const(0x20)
+TXONT3    = const(0x10)
+TXONT2    = const(0x08)
+TXONT1    = const(0x04)
+TXONT0    = const(0x02)
+TICKP8    = const(0x01)
+
+#PACON0 register 0x16
+PAONT7    = const(0x80)
+PAONT6    = const(0x40)
+PAONT5    = const(0x20)
+TXONT4    = const(0x10)
+PAONT3    = const(0x08)
+PAONT2    = const(0x04)
+PAONT1    = const(0x02)
+PAONT0    = const(0x01)
+
+#PACON1 register 0x17
+PAONTS3   = const(0x10)
+PAONTS2   = const(0x08)
+PAONTS1   = const(0x04)
+PAONTS0   = const(0x02)
+PAONT8    = const(0x01)
+
 #PACON2 register 0x18
 FIFOEN    = const(0x80)
 TXONTS3   = const(0x20)
@@ -213,6 +298,10 @@ TXONTS1   = const(0x08)
 TXONTS0   = const(0x04)
 TXONT8    = const(0x02)
 TXONT7    = const(0x01)
+
+#TXBCON0 register 0x1A
+TXBSECEN  = const(0x02)
+TXBTRIG   = const(0x01)
 
 #TXNCON register 0x1B
 FPSTAT    = const(0x10)
