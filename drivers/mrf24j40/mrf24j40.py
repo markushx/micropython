@@ -310,6 +310,121 @@ TXNACKREQ = const(0x04)
 TXNSECEN  = const(0x02)
 TXNTRIG   = const(0x01)
 
+#TXG1CON register 0x1C
+TXG1RETRY1 = const(0x80)
+TXG1RETRY0 = const(0x40)
+TXG1SLOT2  = const(0x20)
+TXG1SLOT1  = const(0x10)
+TXG1SLOT0  = const(0x08)
+TXG1ACKREQ = const(0x04)
+TXG1SECEN  = const(0x02)
+TXG1TRIG   = const(0x01)
+
+#TXG2CON register 0x1D
+TXG2RETRY1 = const(0x80)
+TXG2RETRY0 = const(0x40)
+TXG2SLOT2  = const(0x20)
+TXG2SLOT1  = const(0x10)
+TXG2SLOT0  = const(0x08)
+TXG2ACKREQ = const(0x04)
+TXG2SECEN  = const(0x02)
+TXG2TRIG   = const(0x01)
+
+#ESLOTG23 register 0x1E
+GTS3_3     = const(0x80)
+GTS3_2     = const(0x40)
+GTS3_1     = const(0x20)
+GTS3_0     = const(0x10)
+GTS2_3     = const(0x08)
+GTS2_2     = const(0x04)
+GTS2_1     = const(0x02)
+GTS2_0     = const(0x01)
+
+#ESLOTG45 register 0x1F
+GTS5_3     = const(0x80)
+GTS5_2     = const(0x40)
+GTS5_1     = const(0x20)
+GTS5_0     = const(0x10)
+GTS4_3     = const(0x08)
+GTS4_2     = const(0x04)
+GTS4_1     = const(0x02)
+GTS4_0     = const(0x01)
+
+#ESLOTG67 register 0x20
+GTS6_3     = const(0x08)
+GTS6_2     = const(0x04)
+GTS6_1     = const(0x02)
+GTS6_0     = const(0x01)
+
+#TXPEND register 0x21
+MLIFS5     = const(0x80)
+MLIFS4     = const(0x40)
+MLIFS3     = const(0x20)
+MLIFS2     = const(0x10)
+MLIFS1     = const(0x08)
+MLIFS0     = const(0x04)
+GTSSWITCH  = const(0x02)
+FPACK      = const(0x01)
+
+#WAKECON register 0x22
+IMMWAKE    = const(0x80)
+REGWAKE    = const(0x40)
+
+#FRMOFFSET register 0x23
+OFFSET7    = const(0x80)
+OFFSE6T    = const(0x40)
+OFFSET5    = const(0x20)
+OFFSET4    = const(0x10)
+OFFSET3    = const(0x08)
+OFFSET2    = const(0x04)
+OFFSET1    = const(0x02)
+OFFSET0    = const(0x01)
+
+#TXSTAT register 0x24
+TXNRETRY1  = const(0x80)
+TXNRETRY0  = const(0x40)
+CCAFAIL    = const(0x20)
+TXG2FNT    = const(0x10)
+TXG1FNT    = const(0x08)
+TXG2STAT   = const(0x04)
+TXG1STAT   = const(0x02)
+TXNSTAT    = const(0x01)
+
+#TXBCON1 register 0x25
+TXBMSK     = const(0x80)
+N_WU_BCN   = const(0x40)
+RSSINUM1   = const(0x20)
+RSSINUM0   = const(0x10)
+
+#TXBCON1 register 0x26
+GTSON      = const(0x08)
+
+#TXTIME register 0x27
+TURNTIME3  = const(0x80)
+TURNTIME2  = const(0x40)
+TURNTIME1  = const(0x20)
+TURNTIME0  = const(0x10)
+
+#HSYMTMRL register 0x28
+HSYMTMR7  = const(0x80)
+HSYMTMR6  = const(0x40)
+HSYMTMR5  = const(0x20)
+HSYMTMR4  = const(0x10)
+HSYMTMR3  = const(0x08)
+HSYMTMR2  = const(0x04)
+HSYMTMR1  = const(0x02)
+HSYMTMR0  = const(0x01)
+
+#HSYMTMRH register 0x29
+HSYMTMR15 = const(0x80)
+HSYMTMR14 = const(0x40)
+HSYMTMR13 = const(0x20)
+HSYMTMR12 = const(0x10)
+HSYMTMR11 = const(0x08)
+HSYMTMR10 = const(0x04)
+HSYMTMR09 = const(0x02)
+HSYMTMR08 = const(0x01)
+
 # SOFTRST register 0x2A
 RSTPWR    = const(0x04)
 RSTBB     = const(0x02)
