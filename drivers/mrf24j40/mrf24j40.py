@@ -430,6 +430,25 @@ RSTPWR    = const(0x04)
 RSTBB     = const(0x02)
 RSTMAC    = const(0x01)
 
+# Reserved register 0x2B
+
+#SECCON0 register 0x2C
+SECIGNORE  = const(0x80)
+SECSTART   = const(0x40)
+RXCIPHER2  = const(0x20)
+RXCIPHER1  = const(0x10)
+RXCIPHER0  = const(0x08)
+TXNCIPHER2 = const(0x04)
+TXNCIPHER1 = const(0x02)
+TXNCIPHER0 = const(0x01)
+
+#SECCON1 register 0x2D
+TXBCIPHER2 = const(0x40)
+TXBCIPHER1 = const(0x20)
+TXBCIPHER0 = const(0x10)
+DISDEC     = const(0x02)
+DISENC     = const(0x01)
+
 #TXSTBL register 0x2E
 RFSTBL3  = const(0x80)
 RFSTBL2  = const(0x40)
@@ -439,6 +458,13 @@ MSIFS3   = const(0x08)
 MSIFS2   = const(0x04)
 MSIFS1   = const(0x02)
 MSIFS0   = const(0x01)
+
+# Reserved register 0x2F
+
+#RXSR register 0x30
+UPSECERR  = const(0x40)
+BATIND    = const(0x20)
+SECDECERR = const(0x04)
 
 #INTSTAT register 0x31
 SLPIF     = const(0x80)
@@ -450,12 +476,61 @@ TXG2IF    = const(0x04)
 TXG1IF    = const(0x02)
 TXNIF     = const(0x01)
 
+#INTCON register 0x32
+SLPIE     = const(0x80)
+WAKEIE    = const(0x40)
+HSYMTMRIE = const(0x20)
+SECIE     = const(0x10)
+RXIE      = const(0x08)
+TXG2IE    = const(0x04)
+TXG1IE    = const(0x02)
+TXNIE     = const(0x01)
+
+#GPIO register 0x33
+GPIO5     = const(0x20)
+GPIO4     = const(0x10)
+GPIO3     = const(0x08)
+GPIO2     = const(0x04)
+GPIO1     = const(0x02)
+GPIO0     = const(0x01)
+
+#TRISGPIO register 0x34
+TRISGP5   = const(0x20)
+TRISGP4   = const(0x10)
+TRISGP3   = const(0x08)
+TRISGP2   = const(0x04)
+TRISGP1   = const(0x02)
+TRISGP0   = const(0x01)
+
+#SLPACK register 0x35
+SLPACK    = const(0x80)
+WAKECNT6  = const(0x40)
+WAKECNT5  = const(0x20)
+WAKECNT4  = const(0x10)
+WAKECNT3  = const(0x08)
+WAKECNT2  = const(0x04)
+WAKECNT1  = const(0x02)
+WAKECNT0  = const(0x01)
+
 # RFCTL register 0x36
 WAKECNT8  = const(0x10)
 WAKECNT7  = const(0x08)
 RFRST     = const(0x04)
 RFTXMODE  = const(0x02)
 RFRXMODE  = const(0x01)
+
+#SECCR2 register 0x37
+UPDEC       = const(0x80)
+UPENC       = const(0x40)
+TXG2CIPHER2 = const(0x20)
+TXG2CIPHER1 = const(0x10)
+TXG2CIPHER0 = const(0x08)
+TXG1CIPHER2 = const(0x04)
+TXG1CIPHER1 = const(0x02)
+TXG1CIPHER0 = const(0x01)
+
+# BBREG0 register 0x38
+TURBO      = const(0x04)
 
 # BBREG1 register 0x39
 RXDECINV  = const(0x04)
