@@ -27,6 +27,7 @@ MRF24J40_INT_TX = const(0x2)
 
 """Constants for the MRF24J40 driver for Micro Python"""
 
+# REGISTERS
 # MRF24J40 short registers
 RXMCR      = const(0x00)
 PANIDL     = const(0x01)
@@ -96,7 +97,7 @@ BBREG4    = const(0x3C)
 BBREG6    = const(0x3E)
 CCAEDTH   = const(0x3F)
 
-#TODO: long
+# MRF24J40 long registers
 RFCON0    = const(0x200)
 RFCON1    = const(0x201)
 RFCON2    = const(0x202)
@@ -181,6 +182,8 @@ UPNONCE12 = const(0x24C)
 RX_FIFO = const(0x300)
 TX_FIFO = const(0x000)
 
+# ~REGISTERS
+
 CHANNEL_11 = const(0x03)
 CHANNEL_12 = const(0x13)
 CHANNEL_13 = const(0x23)
@@ -198,6 +201,7 @@ CHANNEL_24 = const(0xD3)
 CHANNEL_25 = const(0xE3)
 CHANNEL_26 = const(0xF3)
 
+# REGISTER CONTENTS
 #RXMCR register 0x00
 NOACKRSP  = const(0x20)
 PANCOORD  = const(0x08)
@@ -543,6 +547,25 @@ CCACSTH2  = const(0x10)
 CCACSTH1  = const(0x08)
 CCACSTH0  = const(0x04)
 
+# BBREG3 register 0x3B
+PREVALIDTH3 = const(0x80)
+PREVALIDTH2 = const(0x40)
+PREVALIDTH1 = const(0x20)
+PREVALIDTH0 = const(0x10)
+PREDETTH2   = const(0x08)
+PREDETTH1   = const(0x04)
+PREDETTH0   = const(0x02)
+
+# BBREG4 register 0x3C
+CSTH2     = const(0x80)
+CSTH1     = const(0x40)
+CSTH0     = const(0x20)
+PRECNT2   = const(0x10)
+PRECNT1   = const(0x08)
+PRECNT0   = const(0x04)
+
+# Reserved register 0x3D
+
 # BBREG6 register 0x3E
 RSSIMODE1 = const(0x80)
 RSSIMODE0 = const(0x40)
@@ -581,17 +604,100 @@ VCOOPT0   = const(0x01)
 #RFCON2 register 0x202
 PLLEN     = const(0x80)
 
+#RFCON3 register 0x203
+TXPWRL1   = const(0x80)
+TXPWRL0   = const(0x40)
+TXPWRS2   = const(0x20)
+TXPWRS1   = const(0x10)
+TXPWRS0   = const(0x08)
+
+# Reserved register 0x204
+
+#RFCON5 register 0x205
+BATTH3    = const(0x80)
+BATTH2    = const(0x40)
+BATTH1    = const(0x20)
+BATTH0    = const(0x10)
+
 #RFCON6 register 0x206
 TXFIL     = const(0x80)
 _20MRECVR = const(0x10)
 BATEN     = const(0x08)
 
 #RFCON7 register 0x207
-SLPCLKSEL1 = const(0x80)
-SLPCLKSEL2 = const(0x40)
+SLPCLKSEL1  = const(0x80)
+SLPCLKSEL2  = const(0x40)
+CLKOUTMODE1 = const(0x02)
+CLKOUTMODE0 = const(0x01)
 
 #RFCON8 register 0x208
 RFVCO     = const(0x10)
+
+#SLPCAL0 register 0x209
+SLPCAL7   = const(0x80)
+SLPCAL6   = const(0x40)
+SLPCAL5   = const(0x20)
+SLPCAL4   = const(0x10)
+SLPCAL3   = const(0x08)
+SLPCAL2   = const(0x04)
+SLPCAL1   = const(0x02)
+SLPCAL0   = const(0x01)
+
+#SLPCAL1 register 0x20A
+SLPCAL15  = const(0x80)
+SLPCAL14  = const(0x40)
+SLPCAL13  = const(0x20)
+SLPCAL12  = const(0x10)
+SLPCAL11  = const(0x08)
+SLPCAL10  = const(0x04)
+SLPCAL9   = const(0x02)
+SLPCAL8   = const(0x01)
+
+#SLPCAL2 register 0x20B
+SLPCALRDY = const(0x80)
+SLPCALEN  = const(0x10)
+SLPCAL19  = const(0x08)
+SLPCAL18  = const(0x04)
+SLPCAL17  = const(0x02)
+SLPCAL16  = const(0x01)
+
+# Reserved register 0x20C
+# Reserved register 0x20D
+# Reserved register 0x20E
+
+#RFSTATE register 0x20F
+RFSTATE2  = const(0x80)
+RFSTATE1  = const(0x40)
+RFSTATE0  = const(0x20)
+
+#RSSI register 0x210
+RSSI7     = const(0x80)
+RSSI6     = const(0x40)
+RSSI5     = const(0x20)
+RSSI4     = const(0x10)
+RSSI3     = const(0x08)
+RSSI2     = const(0x04)
+RSSI1     = const(0x02)
+RSSI0     = const(0x01)
+
+#SLPCON0 register 0x211
+INTEDG     = const(0x02)
+N_SLPCLKEN = const(0x01)
+
+# Reserved register 0x212
+# Reserved register 0x213
+# Reserved register 0x214
+# Reserved register 0x215
+# Reserved register 0x216
+# Reserved register 0x217
+# Reserved register 0x218
+# Reserved register 0x219
+# Reserved register 0x21A
+# Reserved register 0x21B
+# Reserved register 0x21C
+# Reserved register 0x21D
+# Reserved register 0x21E
+# Reserved register 0x21F
 
 #RFCON1 register 0x220
 CLKOUTEN_N = const(0x20)
@@ -601,7 +707,102 @@ SLPCLKDIV2 = const(0x04)
 SLPCLKDIV1 = const(0x02)
 SLPCLKDIV0 = const(0x01)
 
-#... TODO more registers
+# Reserved register 0x221
+
+#WAKETIMEL register 0x222
+WAKETIME7     = const(0x80)
+WAKETIME6     = const(0x40)
+WAKETIME5     = const(0x20)
+WAKETIME4     = const(0x10)
+WAKETIME3     = const(0x08)
+WAKETIME2     = const(0x04)
+WAKETIME1     = const(0x02)
+WAKETIME0     = const(0x01)
+
+#WAKETIMEH register 0x223
+WAKETIME10    = const(0x04)
+WAKETIME9     = const(0x02)
+WAKETIME8     = const(0x01)
+
+#REMCNTL register 0x224
+REMCNT7     = const(0x80)
+REMCNT6     = const(0x40)
+REMCNT5     = const(0x20)
+REMCNT4     = const(0x10)
+REMCNT3     = const(0x08)
+REMCNT2     = const(0x04)
+REMCNT1     = const(0x02)
+REMCNT0     = const(0x01)
+
+#REMCNTH register 0x225
+REMCNT15    = const(0x80)
+REMCNT14    = const(0x40)
+REMCNT13    = const(0x20)
+REMCNT12    = const(0x10)
+REMCNT11    = const(0x08)
+REMCNT10    = const(0x04)
+REMCNT9     = const(0x02)
+REMCNT8     = const(0x01)
+
+#MAINCNT0 register 0x226
+MAINCNT7     = const(0x80)
+MAINCNT6     = const(0x40)
+MAINCNT5     = const(0x20)
+MAINCNT4     = const(0x10)
+MAINCNT3     = const(0x08)
+MAINCNT2     = const(0x04)
+MAINCNT1     = const(0x02)
+MAINCNT0     = const(0x01)
+
+#MAINCNT1 register 0x227
+MAINCNT15    = const(0x80)
+MAINCNT14    = const(0x40)
+MAINCNT13    = const(0x20)
+MAINCNT12    = const(0x10)
+MAINCNT11    = const(0x08)
+MAINCNT10    = const(0x04)
+MAINCNT9     = const(0x02)
+MAINCNT8     = const(0x01)
+
+#MAINCNT2 register 0x228
+MAINCNT23    = const(0x80)
+MAINCNT22    = const(0x40)
+MAINCNT21    = const(0x20)
+MAINCNT20    = const(0x10)
+MAINCNT19    = const(0x08)
+MAINCNT18    = const(0x04)
+MAINCNT17    = const(0x02)
+MAINCNT16    = const(0x01)
+
+#MAINCNT3 register 0x229
+STARTCNT    = const(0x80)
+MAINCNT25    = const(0x02)
+MAINCNT24    = const(0x01)
+
+# Reserved register 0x22A
+# Reserved register 0x22B
+# Reserved register 0x22C
+# Reserved register 0x22D
+# Reserved register 0x22E
+
+#TESTMODE register 0x22F
+RSSIWAIT1    = const(0x10)
+RSSIWAIT0    = const(0x08)
+TESTMDOE2    = const(0x04)
+TESTMDOE1    = const(0x02)
+TESTMDOE0    = const(0x01)
+
+# ASSOEADR0-7 0x230-0x237
+# ASSOSADR0-1 0x238-0x239
+# Reserved register 0x23A
+# Reserved register 0x23B
+# Unimplemented register 0x23C
+# Unimplemented register 0x23D
+# Unimplemented register 0x23E
+# Unimplemented register 0x23F
+# UPNONCE0-12 0x240-0x24C
+
+# ~REGISTER CONTENTS
 
 #IEEE 802.15.4
 FRAME_TYPE_BEACON  = const(0b000)
