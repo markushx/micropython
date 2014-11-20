@@ -1010,7 +1010,7 @@ class MRF24J40:
         #TODO: encryption, etc
         self.reg_short_write(TXNCON, txn | TXNTRIG)
 
-    def send(self, dest, payload):
+    def send_dp(self, dest, payload):
         assert len(dest) == 2 or len(dest) == 8
         assert len(payload) <= 11
 
