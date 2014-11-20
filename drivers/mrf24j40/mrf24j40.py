@@ -475,30 +475,30 @@ TXG1IE    = const(0x02)
 TXNIE     = const(0x01)
 
 #GPIO register 0x33
-GPIO5     = const(0x20)
-GPIO4     = const(0x10)
-GPIO3     = const(0x08)
-GPIO2     = const(0x04)
-GPIO1     = const(0x02)
-GPIO0     = const(0x01)
+# GPIO5     = const(0x20)
+# GPIO4     = const(0x10)
+# GPIO3     = const(0x08)
+# GPIO2     = const(0x04)
+# GPIO1     = const(0x02)
+# GPIO0     = const(0x01)
 
 #TRISGPIO register 0x34
-TRISGP5   = const(0x20)
-TRISGP4   = const(0x10)
-TRISGP3   = const(0x08)
-TRISGP2   = const(0x04)
-TRISGP1   = const(0x02)
-TRISGP0   = const(0x01)
+# TRISGP5   = const(0x20)
+# TRISGP4   = const(0x10)
+# TRISGP3   = const(0x08)
+# TRISGP2   = const(0x04)
+# TRISGP1   = const(0x02)
+# TRISGP0   = const(0x01)
 
 #SLPACK register 0x35
-SLPACK    = const(0x80)
-WAKECNT6  = const(0x40)
-WAKECNT5  = const(0x20)
-WAKECNT4  = const(0x10)
-WAKECNT3  = const(0x08)
-WAKECNT2  = const(0x04)
-WAKECNT1  = const(0x02)
-WAKECNT0  = const(0x01)
+# SLPACK    = const(0x80)
+# WAKECNT6  = const(0x40)
+# WAKECNT5  = const(0x20)
+# WAKECNT4  = const(0x10)
+# WAKECNT3  = const(0x08)
+# WAKECNT2  = const(0x04)
+# WAKECNT1  = const(0x02)
+# WAKECNT0  = const(0x01)
 
 # RFCTL register 0x36
 WAKECNT8  = const(0x10)
@@ -617,33 +617,33 @@ CLKOUTMODE0 = const(0x01)
 #RFCON8 register 0x208
 RFVCO     = const(0x10)
 
-#SLPCAL0 register 0x209
-SLPCAL7   = const(0x80)
-SLPCAL6   = const(0x40)
-SLPCAL5   = const(0x20)
-SLPCAL4   = const(0x10)
-SLPCAL3   = const(0x08)
-SLPCAL2   = const(0x04)
-SLPCAL1   = const(0x02)
-SLPCAL0   = const(0x01)
+# #SLPCAL0 register 0x209
+# SLPCAL7   = const(0x80)
+# SLPCAL6   = const(0x40)
+# SLPCAL5   = const(0x20)
+# SLPCAL4   = const(0x10)
+# SLPCAL3   = const(0x08)
+# SLPCAL2   = const(0x04)
+# SLPCAL1   = const(0x02)
+# SLPCAL0   = const(0x01)
 
-#SLPCAL1 register 0x20A
-SLPCAL15  = const(0x80)
-SLPCAL14  = const(0x40)
-SLPCAL13  = const(0x20)
-SLPCAL12  = const(0x10)
-SLPCAL11  = const(0x08)
-SLPCAL10  = const(0x04)
-SLPCAL9   = const(0x02)
-SLPCAL8   = const(0x01)
+# #SLPCAL1 register 0x20A
+# SLPCAL15  = const(0x80)
+# SLPCAL14  = const(0x40)
+# SLPCAL13  = const(0x20)
+# SLPCAL12  = const(0x10)
+# SLPCAL11  = const(0x08)
+# SLPCAL10  = const(0x04)
+# SLPCAL9   = const(0x02)
+# SLPCAL8   = const(0x01)
 
-#SLPCAL2 register 0x20B
-SLPCALRDY = const(0x80)
-SLPCALEN  = const(0x10)
-SLPCAL19  = const(0x08)
-SLPCAL18  = const(0x04)
-SLPCAL17  = const(0x02)
-SLPCAL16  = const(0x01)
+# #SLPCAL2 register 0x20B
+# SLPCALRDY = const(0x80)
+# SLPCALEN  = const(0x10)
+# SLPCAL19  = const(0x08)
+# SLPCAL18  = const(0x04)
+# SLPCAL17  = const(0x02)
+# SLPCAL16  = const(0x01)
 
 # Reserved register 0x20C
 # Reserved register 0x20D
@@ -655,14 +655,14 @@ RFSTATE1  = const(0x40)
 RFSTATE0  = const(0x20)
 
 #RSSI register 0x210
-RSSI7     = const(0x80)
-RSSI6     = const(0x40)
-RSSI5     = const(0x20)
-RSSI4     = const(0x10)
-RSSI3     = const(0x08)
-RSSI2     = const(0x04)
-RSSI1     = const(0x02)
-RSSI0     = const(0x01)
+# RSSI7     = const(0x80)
+# RSSI6     = const(0x40)
+# RSSI5     = const(0x20)
+# RSSI4     = const(0x10)
+# RSSI3     = const(0x08)
+# RSSI2     = const(0x04)
+# RSSI1     = const(0x02)
+# RSSI0     = const(0x01)
 
 #SLPCON0 register 0x211
 INTEDG     = const(0x02)
@@ -691,77 +691,77 @@ SLPCLKDIV2 = const(0x04)
 SLPCLKDIV1 = const(0x02)
 SLPCLKDIV0 = const(0x01)
 
-# Reserved register 0x221
+# # Reserved register 0x221
 
-#WAKETIMEL register 0x222
-WAKETIME7     = const(0x80)
-WAKETIME6     = const(0x40)
-WAKETIME5     = const(0x20)
-WAKETIME4     = const(0x10)
-WAKETIME3     = const(0x08)
-WAKETIME2     = const(0x04)
-WAKETIME1     = const(0x02)
-WAKETIME0     = const(0x01)
+# #WAKETIMEL register 0x222
+# WAKETIME7     = const(0x80)
+# WAKETIME6     = const(0x40)
+# WAKETIME5     = const(0x20)
+# WAKETIME4     = const(0x10)
+# WAKETIME3     = const(0x08)
+# WAKETIME2     = const(0x04)
+# WAKETIME1     = const(0x02)
+# WAKETIME0     = const(0x01)
 
-#WAKETIMEH register 0x223
-WAKETIME10    = const(0x04)
-WAKETIME9     = const(0x02)
-WAKETIME8     = const(0x01)
+# #WAKETIMEH register 0x223
+# WAKETIME10    = const(0x04)
+# WAKETIME9     = const(0x02)
+# WAKETIME8     = const(0x01)
 
-#REMCNTL register 0x224
-REMCNT7     = const(0x80)
-REMCNT6     = const(0x40)
-REMCNT5     = const(0x20)
-REMCNT4     = const(0x10)
-REMCNT3     = const(0x08)
-REMCNT2     = const(0x04)
-REMCNT1     = const(0x02)
-REMCNT0     = const(0x01)
+# #REMCNTL register 0x224
+# REMCNT7     = const(0x80)
+# REMCNT6     = const(0x40)
+# REMCNT5     = const(0x20)
+# REMCNT4     = const(0x10)
+# REMCNT3     = const(0x08)
+# REMCNT2     = const(0x04)
+# REMCNT1     = const(0x02)
+# REMCNT0     = const(0x01)
 
-#REMCNTH register 0x225
-REMCNT15    = const(0x80)
-REMCNT14    = const(0x40)
-REMCNT13    = const(0x20)
-REMCNT12    = const(0x10)
-REMCNT11    = const(0x08)
-REMCNT10    = const(0x04)
-REMCNT9     = const(0x02)
-REMCNT8     = const(0x01)
+# #REMCNTH register 0x225
+# REMCNT15    = const(0x80)
+# REMCNT14    = const(0x40)
+# REMCNT13    = const(0x20)
+# REMCNT12    = const(0x10)
+# REMCNT11    = const(0x08)
+# REMCNT10    = const(0x04)
+# REMCNT9     = const(0x02)
+# REMCNT8     = const(0x01)
 
-#MAINCNT0 register 0x226
-MAINCNT7     = const(0x80)
-MAINCNT6     = const(0x40)
-MAINCNT5     = const(0x20)
-MAINCNT4     = const(0x10)
-MAINCNT3     = const(0x08)
-MAINCNT2     = const(0x04)
-MAINCNT1     = const(0x02)
-MAINCNT0     = const(0x01)
+# #MAINCNT0 register 0x226
+# MAINCNT7     = const(0x80)
+# MAINCNT6     = const(0x40)
+# MAINCNT5     = const(0x20)
+# MAINCNT4     = const(0x10)
+# MAINCNT3     = const(0x08)
+# MAINCNT2     = const(0x04)
+# MAINCNT1     = const(0x02)
+# MAINCNT0     = const(0x01)
 
-#MAINCNT1 register 0x227
-MAINCNT15    = const(0x80)
-MAINCNT14    = const(0x40)
-MAINCNT13    = const(0x20)
-MAINCNT12    = const(0x10)
-MAINCNT11    = const(0x08)
-MAINCNT10    = const(0x04)
-MAINCNT9     = const(0x02)
-MAINCNT8     = const(0x01)
+# #MAINCNT1 register 0x227
+# MAINCNT15    = const(0x80)
+# MAINCNT14    = const(0x40)
+# MAINCNT13    = const(0x20)
+# MAINCNT12    = const(0x10)
+# MAINCNT11    = const(0x08)
+# MAINCNT10    = const(0x04)
+# MAINCNT9     = const(0x02)
+# MAINCNT8     = const(0x01)
 
-#MAINCNT2 register 0x228
-MAINCNT23    = const(0x80)
-MAINCNT22    = const(0x40)
-MAINCNT21    = const(0x20)
-MAINCNT20    = const(0x10)
-MAINCNT19    = const(0x08)
-MAINCNT18    = const(0x04)
-MAINCNT17    = const(0x02)
-MAINCNT16    = const(0x01)
+# #MAINCNT2 register 0x228
+# MAINCNT23    = const(0x80)
+# MAINCNT22    = const(0x40)
+# MAINCNT21    = const(0x20)
+# MAINCNT20    = const(0x10)
+# MAINCNT19    = const(0x08)
+# MAINCNT18    = const(0x04)
+# MAINCNT17    = const(0x02)
+# MAINCNT16    = const(0x01)
 
-#MAINCNT3 register 0x229
-STARTCNT    = const(0x80)
-MAINCNT25    = const(0x02)
-MAINCNT24    = const(0x01)
+# #MAINCNT3 register 0x229
+# STARTCNT    = const(0x80)
+# MAINCNT25    = const(0x02)
+# MAINCNT24    = const(0x01)
 
 # Reserved register 0x22A
 # Reserved register 0x22B
@@ -770,11 +770,11 @@ MAINCNT24    = const(0x01)
 # Reserved register 0x22E
 
 #TESTMODE register 0x22F
-RSSIWAIT1    = const(0x10)
-RSSIWAIT0    = const(0x08)
-TESTMDOE2    = const(0x04)
-TESTMDOE1    = const(0x02)
-TESTMDOE0    = const(0x01)
+# RSSIWAIT1    = const(0x10)
+# RSSIWAIT0    = const(0x08)
+# TESTMDOE2    = const(0x04)
+# TESTMDOE1    = const(0x02)
+# TESTMDOE0    = const(0x01)
 
 # ASSOEADR0-7 0x230-0x237
 # ASSOSADR0-1 0x238-0x239
