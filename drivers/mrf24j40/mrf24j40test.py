@@ -1,6 +1,7 @@
-"""Test for mrf24j40 module."""
-
 """
+Test for mrf24j40 module.
+
+Usage:
 import mrf24j40test
 """
 

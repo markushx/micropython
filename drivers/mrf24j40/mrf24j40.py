@@ -1,23 +1,7 @@
-"""MRF24J40 driver for Micro Python
+"""
+MRF24J40 driver for Micro Python
 
-import mrf24j40
-from pyb import SPI, Pin
-
-def int_handler(line):
-    ret = mrf.int_tasks()
-    if ((ret & MRF24J40_INT_RX) != 0):
-        mrf.recv()
-    if ((ret & MRF24J40_INT_TX) != 0):
-        print ("TX done")
-
-spi = SPI(1, SPI.MASTER, baudrate=400000, polarity=0, phase=1, firstbit=SPI.MSB)
-pin_cs    = Pin(Pin.board.X5,  Pin.OUT_PP)
-pin_wake  = Pin(Pin.board.Y11, Pin.OUT_PP)
-pin_reset = Pin(Pin.board.Y12, Pin.OUT_PP)
-mrf = mrf24j40.MRF24J40(spi, pin_cs, pin_wake, pin_reset, interrupt='Y10', ihandler=int_handler)
-
-mrf.set_pan(0xcafe)
-mrf.reg_short_read(mrf24j40.PANIDH)
+An example for the usage of the driver is in examples/802154/broadcast.py
 """
 
 import pyb
