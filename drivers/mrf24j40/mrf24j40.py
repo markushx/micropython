@@ -983,11 +983,13 @@ class MRF24J40:
 
     def set_pan(self, pan):
         assert len(pan) == 2
+        self.pan = pan
         self.reg_short_write(PANIDH, pan[0])
         self.reg_short_write(PANIDL, pan[1])
 
     def set_short_address(self, addr):
         assert len(addr) == 2
+        self.addr = addr
         self.reg_short_write(SADRH, addr[0])
         self.reg_short_write(SADRL, addr[1])
 
@@ -1031,8 +1033,8 @@ class MRF24J40:
             self.pan[1],
             dest[0],
             dest[1],
-            self.src[0],
-            self.src[1]
+            self.addr[0],
+            self.addr[1]
             ])
         #TODO: security
         hdr = bytearray([i for subl in [frame_control, [self.seq_number], addressing] for i in subl])
