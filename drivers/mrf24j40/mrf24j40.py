@@ -837,6 +837,7 @@ class MRF24J40:
         pyb.delay(1)
         self.reset.high()
 
+        # this helps finding the SPI start with an oscilloscope
         # self.cs.high()
         # pyb.delay(1)
         # self.cs.low()
