@@ -809,12 +809,13 @@ FRAME_VERSION_2003    = const(0x00)
 FRAME_VERSION_2006    = const(0x01)
 OFFSET_FRAME_VERSION  = const(4)
 
+        
 class MRF24J40:
     seq_number = 0x0
-    pan        = 0x0
-    src        = 0x0
+    pan        = bytearray([0xca, 0xfe])
+    addr       = bytearray([0x00, 0x01])
 
-    def __init__(self, spi, cs, wake, reset, interrupt, ihandler, channel=CHANNEL_26):
+    def __init__(self, spi, cs, wake, reset, channel=CHANNEL_26):
         # init the SPI bus and pins
         cs.init(cs.OUT_PP, cs.PULL_NONE)
         wake.init(wake.OUT_PP, wake.PULL_NONE)
@@ -825,10 +826,11 @@ class MRF24J40:
         self.cs = cs
         self.wake = wake #not used yet
         self.reset = reset #not used yet
-        self.interrupt = interrupt #not used yet
-        self.ihandler = ihandler #not used yet
-        ext = pyb.ExtInt(interrupt, pyb.ExtInt.IRQ_FALLING,
-                         pyb.Pin.PULL_DOWN, ihandler)
+
+        self.txbuf_2 = bytearray(2)
+        self.rxbuf_2 = bytearray(2)
+        self.txbuf_3 = bytearray(3)
+        self.rxbuf_3 = bytearray(3)
 
         # reset everything
         self.reset.low()
@@ -855,12 +857,6 @@ class MRF24J40:
         self.reg_short_write(BBREG2,CCAMODE1) #0x80
         self.reg_short_write(CCAEDTH, CCAEDTH6|CCAEDTH5) #0x60
         self.reg_short_write(BBREG6, RSSIMODE0) #0x40
-
-        #enable interrupts
-        pyb.enable_irq()
-        val = self.reg_short_read(INTCON)
-        val &= ~(0x1|0x8) #Clear TXNIE and RXIE. Enable interrupts
-        self.reg_short_write(INTCON, val)
         
         # set channel
         #print("SET Channel " + str(channel))
@@ -872,55 +868,55 @@ class MRF24J40:
 
         self.reset_radio()
 
+    def enable_interrupts(self):
+        #enable interrupts on microcontroller
+        pyb.enable_irq()
+        #enable interrupts on radio
+        val = self.reg_short_read(INTCON)
+        val &= ~(0x1|0x8) #Clear TXNIE and RXIE. Enable interrupts
+        self.reg_short_write(INTCON, val)
+        
     def reg_short_read(self, reg):
-        txbuf = bytearray(2)
-        rxbuf = bytearray(2)
-        txbuf[0] = 0xff & (reg<<1)
-        txbuf[1] = 0x0
-        print("Short TX read: " + str(txbuf))
+        self.txbuf_2[0] = 0xff & (reg<<1)
+        self.txbuf_2[1] = 0x0
+        #print("Short TX read: " + str(self.txbuf_2))
         self.cs.low()
-        self.spi.send_recv(txbuf, rxbuf)
+        self.spi.send_recv(self.txbuf_2, self.rxbuf_2)
         self.cs.high()
-        print("Short RX read: " + str(rxbuf))
-        return rxbuf[1]
+        #print("Short RX read: " + str(self.rxbuf_2))
+        return self.rxbuf_2[1]
 
     def reg_long_read(self, reg):
-        txbuf = bytearray(3)
-        rxbuf = bytearray(3)
-        txbuf[0] = 0xff & (0x80 | reg>>3)
-        txbuf[1] = 0xff & ((reg<<5))
-        txbuf[2] = 0x0
-        print("Long TX read: " + str(txbuf))
+        self.txbuf_3[0] = 0xff & (0x80 | reg>>3)
+        self.txbuf_3[1] = 0xff & ((reg<<5))
+        self.txbuf_3[2] = 0x0
+        #print("Long TX read: " + str(self.txbuf_3))
         self.cs.low()
-        self.spi.send_recv(txbuf, rxbuf)
+        self.spi.send_recv(self.txbuf_3, self.rxbuf_3)
         self.cs.high()
-        print("Long RX read: " + str(rxbuf))
-        return rxbuf[2]
+        #print("Long RX read: " + str(self.rxbuf_3))
+        return self.rxbuf_3[2]
 
     def reg_short_write(self, reg, buf):
-        txbuf = bytearray(2)
-        rxbuf = bytearray(2)
-        txbuf[0] = 0xff & ((reg<<1) | 0x1)
-        txbuf[1] = buf
-        print("Short TX write: " + str(txbuf))
+        self.txbuf_2[0] = 0xff & ((reg<<1) | 0x1)
+        self.txbuf_2[1] = buf
+        #print("Short TX write: " + str(self.txbuf_2))
         self.cs.low()
-        self.spi.send_recv(txbuf, rxbuf)
+        self.spi.send_recv(self.txbuf_2, self.rxbuf_2)
         self.cs.high()
-        print("Short RX write: " + str(rxbuf))
-        #return rxbuf[1]
+        #print("Short RX write: " + str(self.rxbuf_2))
+        #return self.rxbuf_2[1]
 
     def reg_long_write(self, reg, buf):
-        txbuf = bytearray(3)
-        rxbuf = bytearray(3)
-        txbuf[0] = 0xff & (0x80 | reg>>3)
-        txbuf[1] = 0xff & ((reg<<5) | 0x10)
-        txbuf[2] = buf
-        print("Long TX write: " + str(txbuf))
+        self.txbuf_3[0] = 0xff & (0x80 | reg>>3)
+        self.txbuf_3[1] = 0xff & ((reg<<5) | 0x10)
+        self.txbuf_3[2] = buf
+        #print("Long TX write: " + str(txbuf_3))
         self.cs.low()
-        self.spi.send_recv(txbuf, rxbuf)
+        self.spi.send_recv(self.txbuf_3, self.rxbuf_3)
         self.cs.high()
-        print("Long RX write: " + str(rxbuf))
-        #return rxbuf[1]
+        #print("Long RX write: " + str(self.rxbuf_3))
+        #return self.rxbuf_3[1]
 
     def reset_pin(self):
         self.resetpin.low()
@@ -948,17 +944,16 @@ class MRF24J40:
         return self.reg_long_read(RFCON0)
 
     def int_tasks(self):
-        ret = 0
+        val = 0
         stat = self.reg_short_read(INTSTAT)
-
+        #print("stat " + str(stat))
         if (stat & RXIF):
-            ret |= MRF24J40_INT_RX
-
+            val |= MRF24J40_INT_RX
         if (stat & TXNIF):
-            ret |= MRF24J40_INT_TX
+            val |= MRF24J40_INT_TX
         #TODO: security
 
-        return ret
+        return val
         
     def recv(self):
         irqstate = pyb.disable_irq()
