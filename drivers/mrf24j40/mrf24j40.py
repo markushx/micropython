@@ -772,9 +772,9 @@ SLPCLKDIV0 = const(0x01)
 #TESTMODE register 0x22F
 # RSSIWAIT1    = const(0x10)
 # RSSIWAIT0    = const(0x08)
-# TESTMDOE2    = const(0x04)
-# TESTMDOE1    = const(0x02)
-# TESTMDOE0    = const(0x01)
+# TESTMODE2    = const(0x04)
+# TESTMODE1    = const(0x02)
+# TESTMODE0    = const(0x01)
 
 # ASSOEADR0-7 0x230-0x237
 # ASSOSADR0-1 0x238-0x239
