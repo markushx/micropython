@@ -13,158 +13,158 @@ MRF24J40_INT_TX = const(0x2)
 
 # REGISTERS
 # MRF24J40 short registers
-RXMCR      = const(0x00)
-PANIDL     = const(0x01)
-PANIDH     = const(0x02)
-SADRL      = const(0x03)
-SADRH      = const(0x04)
-EADR0      = const(0x05)
-EADR1      = const(0x06)
-EADR2      = const(0x07)
-EADR3      = const(0x08)
-EADR4      = const(0x09)
-EADR5      = const(0x0A)
-EADR6      = const(0x0B)
-EADR7      = const(0x0C)
-RXFLUSH    = const(0x0D)
-#RESERVED  = const(0x0E)
-#RESERVED  = const(0x0F)
+RXMCR_R      = const(0x00)
+PANIDL_R     = const(0x01)
+PANIDH_R     = const(0x02)
+SADRL_R      = const(0x03)
+SADRH_R      = const(0x04)
+EADR0_R      = const(0x05)
+EADR1_R      = const(0x06)
+EADR2_R      = const(0x07)
+EADR3_R      = const(0x08)
+EADR4_R      = const(0x09)
+EADR5_R      = const(0x0A)
+EADR6_R      = const(0x0B)
+EADR7_R      = const(0x0C)
+RXFLUSH_R    = const(0x0D)
+#RESERVED    = const(0x0E)
+#RESERVED    = const(0x0F)
 
-ORDER     = const(0x10)
-TXMCR     = const(0x11)
-ACKTMOUT  = const(0x12)
-ESLOTG1   = const(0x13)
-SYMTICKL  = const(0x14)
-SYMTICKH  = const(0x15)
-PACON0    = const(0x16)
-PACON1    = const(0x17)
-PACON2    = const(0x18)
-#RESERVED = const(0x19)
-TXBCON0   = const(0x1A)
-TXNCON    = const(0x1B)
-TXG1CON   = const(0x1C)
-TXG2CON   = const(0x1D)
-ESLOTG23  = const(0x1E)
-ESLOTG45  = const(0x1F)
+ORDER_R      = const(0x10)
+TXMCR_R      = const(0x11)
+ACKTMOUT_R   = const(0x12)
+ESLOTG1_R    = const(0x13)
+SYMTICKL_R   = const(0x14)
+SYMTICKH_R   = const(0x15)
+PACON0_R     = const(0x16)
+PACON1_R     = const(0x17)
+PACON2_R     = const(0x18)
+#RESERVED    = const(0x19)
+TXBCON0_R    = const(0x1A)
+TXNCON_R     = const(0x1B)
+TXG1CON_R    = const(0x1C)
+TXG2CON_R    = const(0x1D)
+ESLOTG23_R   = const(0x1E)
+ESLOTG45_R   = const(0x1F)
 
-ESLOTG67  = const(0x20)
-TXPEND    = const(0x21)
-WAKECON   = const(0x22)
-FRMOFFSET = const(0x23)
-TXSTAT    = const(0x24)
-TXBCON1   = const(0x25)
-GATECLK   = const(0x26)
-TXTIME    = const(0x27)
-HSYMTMRL  = const(0x28)
-HSYMTMRH  = const(0x29)
-SOFTRST   = const(0x2A)
-#RESERVED = const(0x2B)
-SECCON0   = const(0x2C)
-SECCON1   = const(0x2D)
-TXSTBL    = const(0x2E)
-#RESERVED = const(0x2F)
+ESLOTG67_R   = const(0x20)
+TXPEND_R     = const(0x21)
+WAKECON_R    = const(0x22)
+FRMOFFSET_R  = const(0x23)
+TXSTAT_R     = const(0x24)
+TXBCON1_R    = const(0x25)
+GATECLK_R    = const(0x26)
+TXTIME_R     = const(0x27)
+HSYMTMRL_R   = const(0x28)
+HSYMTMRH_R   = const(0x29)
+SOFTRST_R    = const(0x2A)
+#RESERVED    = const(0x2B)
+SECCON0_R    = const(0x2C)
+SECCON1_R    = const(0x2D)
+TXSTBL_R     = const(0x2E)
+#RESERVED    = const(0x2F)
 
-RXSR      = const(0x30)
-INTSTAT   = const(0x31)
-INTCON    = const(0x32)
-GPIO      = const(0x33)
-TRISGPIO  = const(0x34)
-SLPACK_R    = const(0x35)
-RFCTL     = const(0x36)
-SECCR2    = const(0x37)
-BBREG0    = const(0x38)
-BBREG1    = const(0x39)
-BBREG2    = const(0x3A)
-BBREG3    = const(0x3B)
-BBREG4    = const(0x3C)
-#RESERVED = const(0x3D)
-BBREG6    = const(0x3E)
-CCAEDTH   = const(0x3F)
+RXSR_R       = const(0x30)
+INTSTAT_R    = const(0x31)
+INTCON_R     = const(0x32)
+GPIO_R       = const(0x33)
+TRISGPIO_R   = const(0x34)
+SLPACK_R     = const(0x35)
+RFCTL_R      = const(0x36)
+SECCR2_R     = const(0x37)
+BBREG0_R     = const(0x38)
+BBREG1_R     = const(0x39)
+BBREG2_R     = const(0x3A)
+BBREG3_R     = const(0x3B)
+BBREG4_R     = const(0x3C)
+#RESERVED    = const(0x3D)
+BBREG6_R     = const(0x3E)
+CCAEDTH_R    = const(0x3F)
 
 # MRF24J40 long registers
-RFCON0    = const(0x200)
-RFCON1    = const(0x201)
-RFCON2    = const(0x202)
-RFCON3    = const(0x203)
-#RESERVED = const(0x204)
-RFCON5    = const(0x205)
-RFCON6    = const(0x206)
-RFCON7    = const(0x207)
-RFCON8    = const(0x208)
-SLPCAL0_R   = const(0x209)
-SLPCAL1_R   = const(0x20A)
-SLPCAL2_R   = const(0x20B)
-#RESERVED = const(0x20C)
-#RESERVED = const(0x20D)
-#RESERVED = const(0x20E)
-RFSTATE   = const(0x20F)
+RFCON0_R     = const(0x200)
+RFCON1_R     = const(0x201)
+RFCON2_R     = const(0x202)
+RFCON3_R     = const(0x203)
+#RESERVED    = const(0x204)
+RFCON5_R     = const(0x205)
+RFCON6_R     = const(0x206)
+RFCON7_R     = const(0x207)
+RFCON8_R     = const(0x208)
+SLPCAL0_R    = const(0x209)
+SLPCAL1_R    = const(0x20A)
+SLPCAL2_R    = const(0x20B)
+#RESERVED    = const(0x20C)
+#RESERVED    = const(0x20D)
+#RESERVED    = const(0x20E)
+RFSTATE_R    = const(0x20F)
 
-RSSI      = const(0x210)
-SLPCON0   = const(0x211)
-#RESERVED = const(0x212)
-#RESERVED = const(0x213)
-#RESERVED = const(0x214)
-#RESERVED = const(0x215)
-#RESERVED = const(0x216)
-#RESERVED = const(0x217)
-#RESERVED = const(0x218)
-#RESERVED = const(0x219)
-#RESERVED = const(0x21A)
-#RESERVED = const(0x21B)
-#RESERVED = const(0x21C)
-#RESERVED = const(0x21D)
-#RESERVED = const(0x21F)
+RSSI_R       = const(0x210)
+SLPCON0_R    = const(0x211)
+#RESERVED    = const(0x212)
+#RESERVED    = const(0x213)
+#RESERVED    = const(0x214)
+#RESERVED    = const(0x215)
+#RESERVED    = const(0x216)
+#RESERVED    = const(0x217)
+#RESERVED    = const(0x218)
+#RESERVED    = const(0x219)
+#RESERVED    = const(0x21A)
+#RESERVED    = const(0x21B)
+#RESERVED    = const(0x21C)
+#RESERVED    = const(0x21D)
+#RESERVED    = const(0x21F)
 
-SLPCON1   = const(0x220)
-#RESERVED = const(0x221)
-WAKETIMEL = const(0x222)
-WAKETIMEH = const(0x223)
-REMCNTL   = const(0x224)
-REMCNTH   = const(0x225)
-MAINCNT0_R  = const(0x226)
-MAINCNT1_R  = const(0x227)
-MAINCNT2_R  = const(0x228)
-MAINCNT3_R  = const(0x229)
-#RESERVED = const(0x22A)
-#RESERVED = const(0x22B)
-#RESERVED = const(0x22C)
-#RESERVED = const(0x22D)
-#RESERVED = const(0x22E)
-TESTMODE  = const(0x22F)
+SLPCON1_R    = const(0x220)
+#RESERVED    = const(0x221)
+WAKETIMEL_R  = const(0x222)
+WAKETIMEH_R  = const(0x223)
+REMCNTL_R    = const(0x224)
+REMCNTH_R    = const(0x225)
+MAINCNT0_R   = const(0x226)
+MAINCNT1_R   = const(0x227)
+MAINCNT2_R   = const(0x228)
+MAINCNT3_R   = const(0x229)
+#RESERVED    = const(0x22A)
+#RESERVED    = const(0x22B)
+#RESERVED    = const(0x22C)
+#RESERVED    = const(0x22D)
+#RESERVED    = const(0x22E)
+TESTMODE_R   = const(0x22F)
 
-ASSOEADR0 = const(0x230)
-ASSOEADR1 = const(0x231)
-ASSOEADR2 = const(0x232)
-ASSOEADR3 = const(0x233)
-ASSOEADR4 = const(0x234)
-ASSOEADR5 = const(0x235)
-ASSOEADR6 = const(0x236)
-ASSOEADR7 = const(0x237)
-ASSOSADR0 = const(0x238)
-ASSOSADR1 = const(0x239)
-#RESERVED = const(0x23A)
-#RESERVED = const(0x23B)
-#UNIMPLEM = const(0x23C)
-#UNIMPLEM = const(0x23D)
-#UNIMPLEM = const(0x23E)
-#UNIMPLEM = const(0x23F)
+ASSOEADR0_R  = const(0x230)
+ASSOEADR1_R  = const(0x231)
+ASSOEADR2_R  = const(0x232)
+ASSOEADR3_R  = const(0x233)
+ASSOEADR4_R  = const(0x234)
+ASSOEADR5_R  = const(0x235)
+ASSOEADR6_R  = const(0x236)
+ASSOEADR7_R  = const(0x237)
+ASSOSADR0_R  = const(0x238)
+ASSOSADR1_R  = const(0x239)
+#RESERVED    = const(0x23A)
+#RESERVED    = const(0x23B)
+#UNIMPLEM    = const(0x23C)
+#UNIMPLEM    = const(0x23D)
+#UNIMPLEM    = const(0x23E)
+#UNIMPLEM    = const(0x23F)
 
-UPNONCE0  = const(0x240)
-UPNONCE1  = const(0x241)
-UPNONCE2  = const(0x242)
-UPNONCE3  = const(0x243)
-UPNONCE4  = const(0x244)
-UPNONCE5  = const(0x245)
-UPNONCE6  = const(0x246)
-UPNONCE7  = const(0x247)
-UPNONCE8  = const(0x248)
-UPNONCE9  = const(0x249)
-UPNONCE10 = const(0x24A)
-UPNONCE11 = const(0x24B)
-UPNONCE12 = const(0x24C)
+UPNONCE0_R   = const(0x240)
+UPNONCE1_R   = const(0x241)
+UPNONCE2_R   = const(0x242)
+UPNONCE3_R   = const(0x243)
+UPNONCE4_R   = const(0x244)
+UPNONCE5_R   = const(0x245)
+UPNONCE6_R   = const(0x246)
+UPNONCE7_R   = const(0x247)
+UPNONCE8_R   = const(0x248)
+UPNONCE9_R   = const(0x249)
+UPNONCE10_R  = const(0x24A)
+UPNONCE11_R  = const(0x24B)
+UPNONCE12_R  = const(0x24C)
 
-RX_FIFO = const(0x300)
-TX_FIFO = const(0x000)
+RX_FIFO_R    = const(0x300)
+TX_FIFO_R    = const(0x000)
 
 # ~REGISTERS
 
@@ -845,27 +845,27 @@ class MRF24J40:
 
         # initialize the MRF24J40 according to Example 3-1 of the datasheet
         self.reset_sw()
-        self.reg_short_write(PACON2, FIFOEN|TXONTS1|TXONTS0) #0x98
-        self.reg_short_write(TXSTBL, RFSTBL3|RFSTBL0|MSIFS2|MSIFS0) #0x95
-        self.reg_long_write(RFCON0, RFOPT0|RFOPT1) #0x03
-        self.reg_long_write(RFCON1, VCOOPT0) #0x01
-        self.reg_long_write(RFCON2, PLLEN) #0x80
-        self.reg_long_write(RFCON6, TXFIL|_20MRECVR) #0x90
-        self.reg_long_write(RFCON7, SLPCLKSEL1) #0x80
-        self.reg_long_write(RFCON8, RFVCO) #0x10
-        self.reg_long_write(SLPCON1, CLKOUTEN_N|SLPCLKDIV0) #0x21
+        self.reg_short_write(PACON2_R, FIFOEN|TXONTS1|TXONTS0) #0x98
+        self.reg_short_write(TXSTBL_R, RFSTBL3|RFSTBL0|MSIFS2|MSIFS0) #0x95
+        self.reg_long_write(RFCON0_R, RFOPT0|RFOPT1) #0x03
+        self.reg_long_write(RFCON1_R, VCOOPT0) #0x01
+        self.reg_long_write(RFCON2_R, PLLEN) #0x80
+        self.reg_long_write(RFCON6_R, TXFIL|_20MRECVR) #0x90
+        self.reg_long_write(RFCON7_R, SLPCLKSEL1) #0x80
+        self.reg_long_write(RFCON8_R, RFVCO) #0x10
+        self.reg_long_write(SLPCON1_R, CLKOUTEN_N|SLPCLKDIV0) #0x21
 
-        self.reg_short_write(BBREG2,CCAMODE1) #0x80
-        self.reg_short_write(CCAEDTH, CCAEDTH6|CCAEDTH5) #0x60
-        self.reg_short_write(BBREG6, RSSIMODE0) #0x40
+        self.reg_short_write(BBREG2_R,CCAMODE1) #0x80
+        self.reg_short_write(CCAEDTH_R, CCAEDTH6|CCAEDTH5) #0x60
+        self.reg_short_write(BBREG6_R, RSSIMODE0) #0x40
         
         # set channel
-        #print("SET Channel " + str(channel))
+        print("SET Channel " + str(channel))
         self.set_channel(channel)
-        #print("GET Channel " + str(self.get_channel()))
+        print("GET Channel " + str(self.get_channel()))
 
         # set transmission power
-        self.reg_long_write(RFCON3, 0x0) # 0dBm
+        self.reg_long_write(RFCON3_R, 0x0) # 0dBm
 
         self.reset_radio()
 
@@ -873,9 +873,9 @@ class MRF24J40:
         #enable interrupts on microcontroller
         pyb.enable_irq()
         #enable interrupts on radio
-        val = self.reg_short_read(INTCON)
+        val = self.reg_short_read(INTCON_R)
         val &= ~(0x1|0x8) #Clear TXNIE and RXIE. Enable interrupts
-        self.reg_short_write(INTCON, val)
+        self.reg_short_write(INTCON_R, val)
         
     def reg_short_read(self, reg):
         self.txbuf_2[0] = 0xff & (reg<<1)
@@ -926,27 +926,27 @@ class MRF24J40:
         pyb.delay(1)
 
     def reset_sw(self):
-        self.reg_short_write(SOFTRST, RSTPWR | RSTBB | RSTMAC)
+        self.reg_short_write(SOFTRST_R, RSTPWR | RSTBB | RSTMAC)
         pyb.delay(1)
 
     def reset_radio(self):
-        self.reg_short_write(RFCTL, RFRST)
+        self.reg_short_write(RFCTL_R, RFRST)
         pyb.delay(1)
-        self.reg_short_write(RFCTL, 0)
+        self.reg_short_write(RFCTL_R, 0)
         pyb.delay(1)
         
     def set_channel(self, channel):
         assert (channel >= CHANNEL_11)
         assert (channel <= CHANNEL_26)
         assert (((channel & 0x0f) == 0x03))
-        self.reg_long_write(RFCON0, channel)
+        self.reg_long_write(RFCON0_R, channel)
 
     def get_channel(self):
-        return self.reg_long_read(RFCON0)
+        return self.reg_long_read(RFCON0_R)
 
     def int_tasks(self):
         val = 0
-        stat = self.reg_short_read(INTSTAT)
+        stat = self.reg_short_read(INTSTAT_R)
         #print("stat " + str(stat))
         if (stat & RXIF):
             val |= MRF24J40_INT_RX
@@ -960,22 +960,22 @@ class MRF24J40:
         irqstate = pyb.disable_irq()
 
         # Set RXDECINV = 1; disable receiving packets off air.
-        self.reg_short_write(BBREG1, RXDECINV)
+        self.reg_short_write(BBREG1_R, RXDECINV)
         
         # Read address, 0x300; get RXFIFO frame length value.
-        len = self.reg_short_read(RX)
+        len = self.reg_short_read(RX_FIFO_R)
 
         # Read RXFIFO addresses, 0x301 through (0x300 + Frame Length + 2);
         # read packet data plus LQI and RSSI.
         buf = []
         for i in range(len):
-            buf[i] = self.reg_short_read(RX+1+i)
+            buf[i] = self.reg_short_read(RX_FIFO_R+1+i)
 
-        lqi = self.reg_short_read(RX_FIFO+len+1)
-        rssi = self.reg_short_read(RX_FIFO+len+2)
+        lqi = self.reg_short_read(RX_FIFO_R+len+1)
+        rssi = self.reg_short_read(RX_FIFO_R+len+2)
         
         # Clear RXDECINV = 0; enable receiving packets.
-        self.reg_short_write(BBREG1, 0)
+        self.reg_short_write(BBREG1_R, 0)
 
         pyb.enable_irq(irqstate)
 
@@ -984,31 +984,31 @@ class MRF24J40:
     def set_pan(self, pan):
         assert len(pan) == 2
         self.pan = pan
-        self.reg_short_write(PANIDH, pan[0])
-        self.reg_short_write(PANIDL, pan[1])
+        self.reg_short_write(PANIDH_R, pan[0])
+        self.reg_short_write(PANIDL_R, pan[1])
 
     def set_short_address(self, addr):
         assert len(addr) == 2
         self.addr = addr
-        self.reg_short_write(SADRH, addr[0])
-        self.reg_short_write(SADRL, addr[1])
+        self.reg_short_write(SADRH_R, addr[0])
+        self.reg_short_write(SADRL_R, addr[1])
 
     def send_basic(self, buf, hdr_len, frame_len):
         assert hdr_len < frame_len
         assert len(buf) == frame_len
 
         # Request ACK
-        txn = self.reg_short_read(TXNCON)
-        self.reg_short_write(TXNCON, txn | TXNACKREQ)
+        txn = self.reg_short_read(TXNCON_R)
+        self.reg_short_write(TXNCON_R, txn | TXNACKREQ)
         
-        self.reg_long_write(TX_FIFO, hdr_len)
-        self.reg_long_write(TX_FIFO+1, frame_len)
+        self.reg_long_write(TX_FIFO_R, hdr_len)
+        self.reg_long_write(TX_FIFO_R+1, frame_len)
 
         for i in range(frame_len):
-            self.reg_long_write(TX_FIFO+2+i, buf[i])
+            self.reg_long_write(TX_FIFO_R+2+i, buf[i])
 
         #TODO: encryption, etc
-        self.reg_short_write(TXNCON, txn | TXNTRIG)
+        self.reg_short_write(TXNCON_R, txn | TXNTRIG)
 
     def send_dp(self, dest, payload):
         assert len(dest) == 2 or len(dest) == 8
