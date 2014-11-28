@@ -27,7 +27,10 @@ def tx_done_cb():
     print("TX done")
 
 def rx_cb(buf, rssi, lqi):
-    print("RX")
+    print(("RX:",
+           "data[",    str(buf),
+           "], rssi[", str(rssi),
+           "], lqi[",  str(lqi), "]").join(" "))
 
 def irq_thread(mrf, interrupt='Y10'):
     intpin = pyb.Pin(interrupt, pyb.Pin.OUT_PP)
